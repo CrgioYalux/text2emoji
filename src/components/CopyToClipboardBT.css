@@ -1,0 +1,54 @@
+.clipboard-container {
+	position: absolute;
+	right: 10px;
+	bottom: 10px;
+	font-size: 1rem;
+}
+
+.clipboard-button {
+	background-color: transparent;
+	border: 0;
+	cursor: pointer;
+}
+
+.clipboard-icon {
+	font-size: 2.5em;
+	color: white;
+}
+
+.tooltip {
+	width: 80px;
+	height: 40px;
+	display: none;
+	position: absolute;
+	top: -60px;
+	left: -60px;
+	text-shadow: none;
+	font-size: 0.8em;
+	color: rgba(255, 255, 200, 1);
+	background-color: rgba(40, 44, 52, 1);
+	border-radius: 9px;
+	text-align: center;
+	place-items: center;
+}
+
+@media (min-width: 768px) {
+	.clipboard-button {
+		opacity: 0.2;
+		transition: opacity 0.2s ease-out;
+	}
+	.clipboard-button:hover {
+		opacity: 1;
+	}
+	.clipboard-button:hover + .tooltip {
+		display: grid;
+	}
+	@keyframes nowyouseeme {
+		0% {
+			opacity: 1;
+		}
+		100% {
+			opacity: 0;
+		}
+	}
+}

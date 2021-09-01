@@ -1,25 +1,31 @@
-import logo from './logo.svg';
 import './App.css';
+import { useState, useEffect } from 'react';
+import { textToEmoji } from './utils/emoji';
+import { CopyToClipboardBt } from './components/CopyToClipboardBT';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+const App = () => {
+	const [inputText, setInputText] = useState('');
+	const [textInEmoji, setTextInEmoji] = useState('');
+	useEffect(() => {
+		setTextInEmoji(textToEmoji(inputText));
+	}, [inputText]);
+	return (
+		<div className="App">
+			<div className="emoji-container" id="emoji-container">
+				<p>{textInEmoji}</p>
+				<CopyToClipboardBt text={textInEmoji} />
+			</div>
+			<textarea
+				className="text-input"
+				value={inputText}
+				placeholder="Mucho texto"
+				autoFocus
+				onChange={(e) => {
+					setInputText(e.target.value);
+				}}
+			/>
+		</div>
+	);
+};
 
 export default App;
